@@ -37,7 +37,9 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'name' => 'required|max:225',
+            'email' => 'required',
+            'mobile' => 'required',
         ]);
 
         // dd($request->all());
@@ -45,6 +47,8 @@ class CategoriesController extends Controller
         $category = new Category;
 
         $category->name = $request->name;
+        $category->email = $request->email;
+        $category->mobile = $request->mobile;
 
         $category->save();
 
@@ -70,7 +74,10 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        // dd($id);
+        $category = Category::find($id);
+
+        return view('admin.categories.edit')->with('category', $category);
     }
 
     /**
@@ -82,7 +89,21 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+
+        $category->name = $request->name;
+        $category->email = $request->email;
+        $category->mobile = $request->mobile;
+
+        // $category = [
+        //     'name' = $request->name,
+        //     'email' = $request->email,
+        //     'mobile' = $request->mobile,
+        // ];
+
+        $category->save();
+
+        return redirect()->route('categories');
     }
 
     /**

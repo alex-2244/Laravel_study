@@ -3,7 +3,9 @@
 @section('content')
 
   <div class="card">
-      <div class="card-header">Dashboard</div>
+      <div class="card-header" style="background-color: rgb(0, 82, 204);color: rgb(255, 255, 255);">
+        Dashboard
+      </div>
 
       <div class="card-body">
         @if (session('status'))

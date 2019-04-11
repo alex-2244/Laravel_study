@@ -2,18 +2,10 @@
 
 @section('content')
 
-    @if (count($errors))
-        <ul class="list-group">
-            @foreach ($errors->all() as $error)
-                <li class="list-group-item text-danger">
-                    {{ $error }}
-                </li>
-            @endforeach
-        </ul>
-    @endif
+    @include('admin.includes.errors')
 
-  <div class="card border border-info">
-    <div class="card-header">
+  <div class="card">
+    <div class="card-header" style="background-color: rgb(0, 82, 204);color: rgb(255, 255, 255);">
         Create a new posts
     </div>
     <div class="card-body">

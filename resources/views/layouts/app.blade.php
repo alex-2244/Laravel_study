@@ -16,14 +16,17 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
+    {{-- fas fa icons --}}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
   <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+    <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: #0052CC;">
       <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand" href="{{ url('/') }}" style="font-weight: 600;color: #fff;">
             {{ config('app.name', 'Laravel') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -50,7 +53,7 @@
               @endif
             @else
               <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a id="navbarDropdown"style="color: #fff;" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 
@@ -77,7 +80,7 @@
         <div class="row">
 
             @if (Auth::check())
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <ul class="list-group">
                         <li class="list-group-item">
                             <a href="{{ route('home') }}">Home</a>
@@ -95,8 +98,12 @@
                 </div>
             @endif
 
-          <div class="col-lg-8">
-            @yield('content')
+          <div class="col-lg-9">
+            <div class="card border border-info">
+              <div class="card-body">
+                @yield('content')
+              </div>
+            </div>
           </div>
 
         </div>

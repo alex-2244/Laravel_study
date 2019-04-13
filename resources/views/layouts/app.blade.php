@@ -8,9 +8,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,6 +22,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" rel="stylesheet">
+ 
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/style.css') }}" rel="stylesheet"> --}}
+
+    <style>
+      .nav-item .nav-link {
+        color:#fff !important;
+      }
+    </style>
 </head>
 <body>
   <div id="app">
@@ -98,17 +110,32 @@
                 </div>
             @endif
 
-          <div class="col-lg-9">
-            <div class="card border border-info">
-              <div class="card-body">
+          <div class="col-lg-9" style="margin: 0 auto;">
                 @yield('content')
-              </div>
-            </div>
           </div>
 
         </div>
       </div>
     </main>
   </div>
+
+  
+
+  {{-- script --}}
+  <script src="{{ asset('js/toastr.min.js') }}"></script>
+
+    <script>
+      @if(Session::has('success'))
+        toastr.success(" {{ Session::get('success') }} ", 'New category')
+        
+      @elseif(Session::has('info'))
+      toastr.info("{{ Session::get('info') }}")
+
+      @elseif(Session::has('error'))
+        toastr.error("{{ Session::get('error') }}")
+      @endif
+      
+    </script>
+    
 </body>
 </html>

@@ -3,7 +3,7 @@
 
 @section('content')
     <table class="table table-hover">
-      <thead class="table-info" style="background-color: #0052CC;color: #fff;">
+      <thead class="table-info" style="background-color: #0052CC;color: #fff;text-align: center;">
         <th> Category Name </th>
         <th> E-mail </th>
         <th> Mobile </th>
@@ -13,7 +13,7 @@
       <tbody>
         
         @foreach ($categories as $category)
-            <tr>
+            <tr style="text-align: center;">
               <td> {{ $category->name }} </td>
               <td> {{ $category->email }} </td>
               <td> {{ $category->mobile }} </td>

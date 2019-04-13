@@ -78,10 +78,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     //     'as' => 'category.update'
     // ]);
 
-    Route::post('/category/update/{id}', array(
+    Route::post('/category/update/{id}', [
         'as' => 'category.update',
         'uses' => 'CategoriesController@update'
-    ));
+    ]);
 
 
 });

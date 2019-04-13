@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-end">
+    <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            <div class="card-header">{{ __('Login Page') }}</div>
+            <div class="card-header" style="background-color: #f8fafc;">{{ __('Login Page') }}</div>
 
 
                 <div class="card-body">

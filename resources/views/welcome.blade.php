@@ -61,30 +61,33 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            #menu-items a {
+                color: rgb(0, 82, 204);
+            }
         </style>
     </head>
-    <body>
+    <body style="background-color: #f8fafc;">
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}" style="color: rgb(0, 82, 204);">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}" style="color: rgb(0, 82, 204);">Register</a>
                         @endif
                     @endauth
                 </div>
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
+                <div class="title m-b-md" style="color: rgb(0, 82, 204);">
                     Laravel
                 </div>
 
-                <div class="links">
+                <div class="links" id="menu-items">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>

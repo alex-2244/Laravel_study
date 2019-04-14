@@ -9,11 +9,18 @@ class Post extends Model
 {
     use SoftDeletes;
 
+    //this is to give permission to when we inserting lot of data
     protected $fillable = [
-        'title', 'content', 'category_id', 'featured',
+        'title', 'content', 'category_id', 'featured', 'slug',
     ];
 
-    protected $dates= ['deleted_at'];
+
+    public function getFeaturedAttribute($featured)
+    {
+        return asset($featured);
+    }
+
+    protected $dates = ['deleted_at'];
 
     public function category()
     {

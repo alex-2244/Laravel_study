@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/login';
+    protected $redirectTo = '/admin/register';
 
     /**
      * Create a new controller instance.
@@ -69,6 +69,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        return redirect()->route('login');
+        // return redirect()->route('login');
     }
 }

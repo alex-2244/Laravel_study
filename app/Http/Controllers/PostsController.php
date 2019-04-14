@@ -16,8 +16,12 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        // $image = DB::table('posts')->get()->featured();
+        // return view('admin.posts.index')->with('posts', $image);
+        return view('admin.posts.index')->with('posts', Post::all());
     }
+
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +29,17 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create')->with('categories', Category::all());
+        // this is to attempting to create new post before creating the category, this will protect to move onto post before creating category
+        $category = Category::all();
+
+        if ($category->count() == 0) {
+            
+            Session::flash('error', 'You must have some category before attempting to create post');
+            return redirect()->back();
+
+        }
+        
+        return view('admin.posts.create')->with('categories', $category);
     }
 
     /**
@@ -49,20 +63,23 @@ class PostsController extends Controller
 
         $featured = $request->featured;
 
-        $featured_new_name = time().$featured->getClientoriginalName();
+        $featured_new_name = time().$featured->getClientOriginalName();
 
         $featured->move('uploads/loadimage', $featured_new_name);
 
         $post = Post::create([
             'title' => $request->title,
             'content' => $request->content,
-            'featured' => 'uploads/loadimage' . $featured_new_name,
+            'featured' => 'uploads/loadimage/' . $featured_new_name,
             'category_id' => $request->category_id,
+            //slug is to display the words with '-' between each word(Create New Project = create-new-project)and it will be shown lowercase
+            'slug' => str_slug($request->title)
         ]);
 
-        Session::flash('success', 'Post created successfully ');
+        Session::flash('success', 'Post created successfully');
         
-        dd($request->all());
+        // dd($request->all());
+        return redirect()->back();
 
     }
 
@@ -108,6 +125,12 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->delete();
+
+        Session::flash('success', 'Your post was just trashed');
+
+        return redirect()->back();
     }
 }

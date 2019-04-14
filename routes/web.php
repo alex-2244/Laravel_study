@@ -1,4 +1,7 @@
 <?php
+// use Symfony\Component\Routing\Annotation\Route;
+use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -11,19 +14,19 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
     return view('welcome');
 });
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index');
+// Route::get('/', 'HomeController@index');
 
 
 //MIDDLEWARE IS USED TO AUTHENTICATE WHETHER THE USER IS LOGGED IN OR NOT
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-
+    
     Route::get('/home', [
         'uses' => 'HomeController@index',
         'as'   => 'home'
@@ -35,10 +38,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         'as'   => 'post.create'
     ]);
 
+    Route::get('/posts', [
+        'uses' => 'PostsController@index',
+        'as' => 'posts'
+    ]);
+
 
     Route::post('/post/store', [
         'uses' => 'PostsController@store',
         'as'   => 'post.store'
+    ]);
+
+    Route::get('/post/delete/{id}', [
+        'uses' => 'PostsController@destroy',
+        'as' => 'post.delete'
     ]);
 
 

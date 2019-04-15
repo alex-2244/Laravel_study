@@ -107,6 +107,9 @@
                             <a href="{{ route('posts') }}">All Posts</a>
                         </li>
                         <li class="list-group-item">
+                          <a href="{{ route('post.trashed') }}">All Trashed</a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="{{ route('post.create') }}">Create new post</a>
                         </li>
                     </ul>

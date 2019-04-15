@@ -123,6 +123,17 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+    public function trashed() {
+        $posts = Post::onlyTrashed()->get();
+
+        // dd($posts);
+
+        return view('admin.posts.trashed')->with('posts', $posts);
+    }
+
+
     public function destroy($id)
     {
         $post = Post::find($id);

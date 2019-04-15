@@ -16,7 +16,7 @@ class Post extends Model
 
 
     public function getFeaturedAttribute($featured)
-    {
+    {        
         return asset($featured);
     }
 

@@ -4,37 +4,33 @@
 @section('content')
    <div class="card">
      <div class="card-header">
-       Categories Page
+       Tags
      </div>
      <div class="card-body">
       <table class="table table-hover">
         <thead class="table-info" style="background-color: #0052CC;color: #fff;text-align: center;">
-          <th> Category Name </th>
-          <th> E-mail </th>
-          <th> Mobile </th>
+          <th> Tag Name </th>
           <th> Editing </th>
           <th> Delete </th>
         </thead>
         <tbody>
           
-          @if ($categories->count()> 0)
-            @foreach ($categories as $category)
+          @if ($tags->count()> 0)
+            @foreach ($tags as $tag)
               <tr style="text-align: center;">
-                <td> {{ $category->name }} </td>
-                <td> {{ $category->email }} </td>
-                <td> {{ $category->mobile }} </td>
+                <td> {{ $tag->tag }} </td>
                 <td>
-                  <a href="{{ route('category.edit', [ 'id' => $category->id ]) }}"> <i class="fas fa-edit"></i> </a>
+                  <a href="{{ route('tag.edit', [ 'id' => $tag->id ]) }}"> <i class="fas fa-edit"></i> </a>
                 </td>
                 <td>
-                  <a href="{{ route('category.delete', [ 'id' => $category->id ]) }}"> <i class="fas fa-trash"></i> </a>
+                  <a href="{{ route('tag.delete', [ 'id' => $tag->id ]) }}"> <i class="fas fa-trash"></i> </a>
                 </td>
                 
               </tr>
             @endforeach
           @else
             <tr>
-              <th colspan="5" class="text-center">  No Categories </th>
+              <th colspan="5" class="text-center">  No Tags </th>
             </tr>
           @endif
   

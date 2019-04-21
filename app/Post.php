@@ -7,23 +7,28 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
-    use SoftDeletes;
+  use SoftDeletes;
 
-    //this is to give permission to when we inserting lot of data
-    protected $fillable = [
-        'title', 'content', 'category_id', 'featured', 'slug',
-    ];
+  //this is to give permission to when we inserting lot of data
+  protected $fillable = [
+      'title', 'content', 'category_id', 'featured', 'slug',
+  ];
 
 
-    public function getFeaturedAttribute($featured)
-    {        
-        return asset($featured);
-    }
+  public function getFeaturedAttribute($featured)
+  {        
+      return asset($featured);
+  }
 
-    protected $dates = ['deleted_at'];
+  protected $dates = ['deleted_at'];
 
-    public function category()
-    {
-        return $this->belongsTo('App\Category');
-    }
+  public function category()
+  {
+      return $this->belongsTo('App\Category');
+  }
+
+  public function tags()
+  {
+      return $this->belongsToMany('App\Tag');
+  }
 }

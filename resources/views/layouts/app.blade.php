@@ -11,7 +11,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -24,9 +23,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" rel="stylesheet">
- 
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('css/style.css') }}" rel="stylesheet"> --}}
+
+    <link href="{{ asset('uploads/logo/logo1.jpg') }}" rel="shortcut icon">
 
     <style>
       .nav-item .nav-link {
@@ -97,21 +96,41 @@
                         <li class="list-group-item">
                             <a href="{{ route('home') }}">Home</a>
                         </li>
-                        <li class="list-group-item">
-                          <a href="{{ route('categories') }}">Categories</a>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="{{ route('category.create') }}">Create new categories</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="{{ route('posts') }}">All Posts</a>
-                        </li>
-                        <li class="list-group-item">
-                          <a href="{{ route('post.trashed') }}">All Trashed</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="{{ route('post.create') }}">Create new post</a>
-                        </li>
+
+                        @if (Auth::user()->admin)
+                            <li class="list-group-item">
+                                <a href="{{ route('categories') }}">Categories</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('category.create') }}">Create new categories</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('user.create') }}">New User</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('users') }}">Users</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('user.profile') }}">My Account</a>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="{{ route('tags') }}">Tags</a>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="{{ route('tag.create') }}">Create Tag</a>
+                            </li>
+
+                            <li class="list-group-item">
+                                <a href="{{ route('posts') }}">All Posts</a>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="{{ route('post.trashed') }}">All Trashed</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('post.create') }}">Create new post</a>
+                            </li>
+                        @endif
+
                     </ul>
                 </div>
             @endif
@@ -125,7 +144,7 @@
     </main>
   </div>
 
-  
+
 
   {{-- script --}}
   <script src="{{ asset('js/toastr.min.js') }}"></script>
@@ -133,15 +152,15 @@
     <script>
       @if(Session::has('success'))
         toastr.success(" {{ Session::get('success') }} ")
-        
+
       @elseif(Session::has('info'))
       toastr.info("{{ Session::get('info') }}")
 
       @elseif(Session::has('error'))
         toastr.error("{{ Session::get('error') }}")
       @endif
-      
+
     </script>
-    
+
 </body>
 </html>

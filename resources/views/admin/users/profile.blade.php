@@ -9,17 +9,17 @@
         Edit your profile
     </div>
     <div class="card-body">
-    <form action="{{ route('user.profile.update') }}" method="post">
+    <form action="{{ route('user.profile.update') }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">
-          <label for="name">Username</label>
+          <label for="username">Username</label>
           <input type="text" name="name" value="{{ $user->name }}" class="form-control">
           @if($errors->has('name'))
               <p style="color: red;"> {{ $errors->first('name') }} </p>
           @endif
         </div>
         <div class="form-group">
-          <label for="name">E-mail</label>
+          <label for="email">E-mail</label>
           <input type="email" name="email" value="{{ $user->email }}" class="form-control">
           @if($errors->has('email'))
               <p style="color: red;"> {{ $errors->first('email') }} </p>

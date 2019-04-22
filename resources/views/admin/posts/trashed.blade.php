@@ -16,20 +16,22 @@
             <th> Destroy </th>
           </thead>
           <tbody>
-            
+
             @if ($posts->count() > 0)
               @foreach ($posts as $post)
                 <tr style="text-align: center;">
                   <td> <img src="{{ $post->featured }}" alt="{{ $post->title }}" width="50px" height="50px"> </td>
                   <td> {{ $post->title }} </td>
                   <td>
-                    <a href="#"> <i class="fas fa-edit"></i> </a>
+                    <a href="#" class="btn btn-sm btn-outline-primary"> <i class="fas fa-edit"></i> </a>
                   </td>
                   <td>
-                    <a href="{{ route('post.restore', ['id' => $post->id]) }}"> <i style="color: green;" class="fas fa-trash-restore"></i> </a>
+                    <a href="{{ route('post.restore', ['id' => $post->id]) }}" class="btn btn-sm btn-outline-success">
+                      <i style="color: green;" class="fas fa-trash-restore"></i> </a>
                   </td>
                   <td>
-                    <a href="{{ route('post.kill', ['id' => $post->id]) }}" style="color: red;"> <i class="fas fa-trash"></i> </a>
+                    <a href="{{ route('post.kill', ['id' => $post->id]) }}" style="color: red;" class="btn btn-sm btn-outline-danger">
+                      <i class="fas fa-trash"></i> </a>
                   </td>
                 </tr>
               @endforeach
@@ -38,7 +40,7 @@
                   <th colspan="5" class="text-center">  No Trashed posts </th>
                 </tr>
             @endif
-    
+
           </tbody>
         </table>
       </div>

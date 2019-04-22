@@ -47,7 +47,7 @@ class UsersController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required'
+            'email' => 'required|email'
         ]);
 
         $user = User::create([
@@ -110,7 +110,13 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->profile->delete();
+        $user->delete();
+
+        Session::flash('success', 'User deleted');
+
+        return redirect()->back();
     }
 
 

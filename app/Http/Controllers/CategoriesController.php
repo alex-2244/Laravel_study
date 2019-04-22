@@ -53,9 +53,7 @@ class CategoriesController extends Controller
         $category->mobile = $request->mobile;
 
         $category->save();
-
         Session::flash('success', 'You created a new category');
-        
         return redirect()->route('categories');
     }
 
@@ -78,11 +76,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-
         // dd($id);
         $category = Category::find($id);
-
-
         return view('admin.categories.edit')->with('category', $category);
     }
 
@@ -100,17 +95,13 @@ class CategoriesController extends Controller
         $category->name = $request->name;
         $category->email = $request->email;
         $category->mobile = $request->mobile;
-
         // $category = [
         //     'name' = $request->name,
         //     'email' = $request->email,
         //     'mobile' = $request->mobile,
         // ];
-
         $category->save();
-
         Session::flash('info', 'You have successfully edited the category');
-
         return redirect()->route('categories');
     }
 
@@ -123,11 +114,11 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id);
-
+        foreach ($category->posts as $post) {
+            $post->forceDelete();
+        }
         $category->delete();
-
         Session::flash('error', 'You have successfully deleted the category');
-
         return redirect()->route('categories');
     }
 }

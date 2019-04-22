@@ -22,7 +22,7 @@ class PostsController extends Controller
       return view('admin.posts.index')->with('posts', Post::all());
   }
 
-  
+
   /**
    * Show the form for creating a new resource.
    *
@@ -32,14 +32,15 @@ class PostsController extends Controller
   {
     // this is to attempting to create new post before creating the category, this will protect to move onto post before creating category
     $category = Category::all();
+    $tags = Tag::all();
 
-    if ($category->count() == 0) {    
-      Session::flash('error', 'You must have some category before attempting to create post');
+    if ($category->count() == 0 || $tags->count() == 0) {
+      Session::flash('error', 'You must have some category and tags before attempting to create post');
       return redirect()->back();
     }
-    
+
     return view('admin.posts.create')->with('categories', $category)
-                                     ->with('tags', Tag::all());
+                                     ->with('tags', $tags);
   }
 
   /**
@@ -51,7 +52,7 @@ class PostsController extends Controller
   public function store(Request $request)
   {
     // dd($request->all());
-    
+
     //VALIDATING THE FORM FOR THE EMPTY FIELD
     $this->validate($request, [
         'title' => 'required|max:225',
@@ -62,7 +63,7 @@ class PostsController extends Controller
     ]);
 
     // dd($request->all());
-    
+
 
     //THIS METHOD IS USED TO GET THE ORIGINAL NAME OF THE IMAGE BECAUSE SOMEONE CAN RENAME THE IMAGE TO PREVENTFROM THAT WE DOING THIS METHOD
     $featured = $request->featured;
@@ -81,7 +82,7 @@ class PostsController extends Controller
     $post->tags()->attach($request->tags);
 
     Session::flash('success', 'Post created successfully');
-    
+
     // dd($request->all());
     return redirect()->back();
 
@@ -131,11 +132,11 @@ class PostsController extends Controller
       ]);
 
       $post = Post::find($id);
-      
+
 
       /*
-      this check the image is already present or not 
-      if present then update the other content or 
+      this check the image is already present or not
+      if present then update the other content or
       if you want to add new image you can choose new one
       */
 
@@ -188,7 +189,7 @@ class PostsController extends Controller
       return redirect()->back();
   }
 
-  //deleted data will be moved to trashed not deleted permanently 
+  //deleted data will be moved to trashed not deleted permanently
   public function trashed() {
       $posts = Post::onlyTrashed()->get();
 
@@ -202,7 +203,7 @@ class PostsController extends Controller
   {
       $post = Post::withTrashed()->where('id', $id)->first();
       // dd($post);
-      
+
       $post->forceDelete();
 
       Session::flash('success', 'Post deleted permanently');

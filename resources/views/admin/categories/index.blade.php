@@ -24,10 +24,12 @@
                 <td> {{ $category->email }} </td>
                 <td> {{ $category->mobile }} </td>
                 <td>
-                  <a href="{{ route('category.edit', [ 'id' => $category->id ]) }}"> <i class="fas fa-edit"></i> </a>
+                  <a href="{{ route('category.edit', [ 'id' => $category->id ]) }}" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-edit"></i> </a>
                 </td>
                 <td>
-                  <a href="{{ route('category.delete', [ 'id' => $category->id ]) }}"> <i class="fas fa-trash"></i> </a>
+                  <a href="{{ route('category.delete', [ 'id' => $category->id ]) }}" class="btn btn-sm btn-outline-danger">
+                    <i class="fas fa-trash"></i> </a>
                 </td>
                 
               </tr>

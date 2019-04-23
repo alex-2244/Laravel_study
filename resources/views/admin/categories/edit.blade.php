@@ -5,7 +5,7 @@
     @include('admin.includes.errors')
 
   <div class="card">
-    <div class="card-header" style="background-color: #0052CC;color: #fff;">
+    <div class="card-header" style="color: #0e0c28;">
         Update category: {{ $category->name }}
     </div>
     <div class="card-body">
@@ -25,13 +25,13 @@
         </div>
           <div class="form-group">
           <div class="text-center">
-            <button class="btn btn-success" type="submit"> Update category </button>
+            <button class="btn btn-xs btn-success" type="submit"> Update category </button>
           </div>
         </div>
       </form>
     </div>
   </div>
-  
+
 
 
 @endsection

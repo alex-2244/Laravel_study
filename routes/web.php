@@ -206,7 +206,34 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         'as' => 'user.delete'
     ]);
 
+
+
+    Route::get('/settings', [
+        'uses' => 'SettingsController@index',
+        'as' => 'settings'
+    ]);
+
+    Route::post('/settings/update', [
+        'uses' => 'SettingsController@update',
+        'as' => 'settings.update'
+    ]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
+
+
 
 
 
@@ -217,15 +244,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 // |
 
-
-// Route::get('/post/create', [
-//     'uses' => 'PostsController@create',
-//     'as'   => 'post.create'
-// ]);
-
-
-// Route::post('/post/store', [
-//     'uses' => 'PostsController@store',
-//     'as'   => 'post.store'
-// ]);
 

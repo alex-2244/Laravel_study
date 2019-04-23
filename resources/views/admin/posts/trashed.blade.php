@@ -3,12 +3,12 @@
 
 @section('content')
     <div class="card">
-      <div class="card-header">
+      <div class="card-header" style="color: #0e0c28;">
         Trashed Page
       </div>
       <div class="card-body">
         <table class="table table-hover">
-          <thead class="table-info" style="background-color: #0052CC;color: #fff;text-align: center;">
+          <thead class="table-info" style="text-align:center;">
             <th> Image </th>
             <th> Title </th>
             <th> Edit </th>

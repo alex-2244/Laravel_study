@@ -3,12 +3,12 @@
 
 @section('content')
    <div class="card">
-     <div class="card-header">
+     <div class="card-header" style="color: #0e0c28;">
        Categories Page
      </div>
      <div class="card-body">
       <table class="table table-hover">
-        <thead class="table-info" style="background-color: #0052CC;color: #fff;text-align: center;">
+        <thead class="table-info" style="text-align: center;">
           <th> Category Name </th>
           <th> E-mail </th>
           <th> Mobile </th>
@@ -16,7 +16,7 @@
           <th> Delete </th>
         </thead>
         <tbody>
-          
+
           @if ($categories->count()> 0)
             @foreach ($categories as $category)
               <tr style="text-align: center;">
@@ -24,14 +24,14 @@
                 <td> {{ $category->email }} </td>
                 <td> {{ $category->mobile }} </td>
                 <td>
-                  <a href="{{ route('category.edit', [ 'id' => $category->id ]) }}" class="btn btn-sm btn-outline-primary">
+                  <a href="{{ route('category.edit', [ 'id' => $category->id ]) }}" class="btn btn-xs btn-outline-primary">
                     <i class="fas fa-edit"></i> </a>
                 </td>
                 <td>
-                  <a href="{{ route('category.delete', [ 'id' => $category->id ]) }}" class="btn btn-sm btn-outline-danger">
+                  <a href="{{ route('category.delete', [ 'id' => $category->id ]) }}" class="btn btn-xs btn-outline-danger">
                     <i class="fas fa-trash"></i> </a>
                 </td>
-                
+
               </tr>
             @endforeach
           @else
@@ -39,7 +39,7 @@
               <th colspan="5" class="text-center">  No Categories </th>
             </tr>
           @endif
-  
+
         </tbody>
       </table>
      </div>

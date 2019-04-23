@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
         <!-- Styles -->
         <style>
@@ -62,28 +63,37 @@
                 margin-bottom: 30px;
             }
             #menu-items a {
-                color: rgb(0, 82, 204);
+                /* color: rgb(0, 82, 204); */
+                color:#fff;
+
+            }
+            #back {
+                background-image: url(assets/bg/bg2.jpg);
+                background-position: inherit;
+                background-size: cover;
             }
         </style>
     </head>
     <body style="background-color: #f8fafc;">
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height" id="back">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}" style="color: rgb(0, 82, 204);">Login</a>
+                        <a href="{{ route('login') }}" style="color: #fff;">
+                            <span><i class="fas fa-fw fa-user"></i></span>Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" style="color: rgb(0, 82, 204);">Register</a>
+                            <a href="{{ route('register') }}" style="color: #fff;">
+                                <span><i class="fas fa-fw fa-sign-in-alt"></i></span>&nbsp;Register</a>
                         @endif
                     @endauth
                 </div>
             @endif
 
             <div class="content">
-                <div class="title m-b-md" style="color: rgb(0, 82, 204);">
+                <div class="title m-b-md" style="color: #fff;font-weight:800;">
                     Laravel
                 </div>
 

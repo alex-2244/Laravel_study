@@ -76,17 +76,30 @@
               @endif
             @else
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" style="color:black !important;" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown" style="color:black !important;text-transform: capitalize;" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                      <a class="dropdown-item" href="{{ route('user.profile') }}">
+                        <span><i class="fas fa-fw fa-user"></i></span>
+                        &nbsp;My Account
                     </a>
+
+                    @if (Auth::User()->admin)
+                        <a class="dropdown-item" href="{{ route('settings') }}">
+                            <span><i class="fas fa-fw fa-cog"></i></span>
+                            &nbsp;Settings
+                        </a>
+                    @endif
+
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                        <span> <i class="fas fa-fw fa-power-off"></i> </span>&nbsp;{{ __('Logout') }}
+                    </a>
+
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
@@ -198,7 +211,7 @@
                             </div>
                           </li>
                         @endif
-                        <li class="nav-item">
+                        {{--  <li class="nav-item">
                           <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Account</a>
                           <div id="submenu-5" class="collapse submenu" style="">
                             <ul class="nav flex-column">
@@ -207,7 +220,7 @@
                               </li>
                             </ul>
                           </div>
-                        </li>
+                        </li>  --}}
                         <li class="nav-divider">
                             Features
                         </li>
@@ -306,3 +319,8 @@
     <script src="{{ asset('assets/libs/js/dashboard-ecommerce.js') }}"></script>
 </body>
 </html>
+
+
+
+
+

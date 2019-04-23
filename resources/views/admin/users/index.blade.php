@@ -3,12 +3,12 @@
 
 @section('content')
     <div class="card">
-      <div class="card-header">
+      <div class="card-header" style="color: #0e0c28;">
         Users
       </div>
       <div class="card-body">
         <table class="table table-hover">
-          <thead class="table-info" style="background-color: #0052CC;color: #fff;text-align: center;">
+          <thead class="table-info" style="text-align: center;">
             <th> Image </th>
             <th> Name </th>
             <th> permission </th>
@@ -22,14 +22,14 @@
                   <td> {{ $user->name }} </td>
                   <td>
                       @if ($user->admin)
-                          <a href="{{ route('user.not.admin', ['id' => $user->id]) }}" class="btn btn-sm btn-outline-primary">Remove Permission</a>
+                          <a href="{{ route('user.not.admin', ['id' => $user->id]) }}" class="btn btn-xs btn-outline-primary">Remove Permission</a>
                       @else
-                          <a href="{{ route('user.admin', ['id' => $user->id]) }}" class="btn btn-sm btn-outline-success"> Make admin </a>
+                          <a href="{{ route('user.admin', ['id' => $user->id]) }}" class="btn btn-xs btn-outline-success"> Make admin </a>
                       @endif
                   </td>
                   <td>
                         @if (Auth::id() !== $user->id)
-                            <a href="{{ route('user.delete', ['id' => $user->id]) }}" class="btn btn-sm btn-outline-danger">
+                            <a href="{{ route('user.delete', ['id' => $user->id]) }}" class="btn btn-xs btn-outline-danger">
                                 <i class="fas fa-trash"></i>
                             </a>
                         @endif

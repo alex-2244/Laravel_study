@@ -5,7 +5,7 @@
     {{-- @include('admin.includes.errors') --}}
   {{-- CARD STARTS --}}
   <div class="card">
-    <div class="card-header" style="background-color: rgb(0, 82, 204);color: rgb(255, 255, 255);">
+    <div class="card-header" style="color: #0e0c28;">
         Create a new posts
     </div>
     <div class="card-body">
@@ -59,7 +59,7 @@
 
         <div class="form-group">
           <div class="text-center">
-            <button class="btn btn-success" type="submit"> Store post </button>
+            <button class="btn btn-xs btn-success" type="submit"> Store post </button>
           </div>
         </div>
 

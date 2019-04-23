@@ -5,8 +5,8 @@
     {{-- @include('admin.includes.errors') --}}
   {{-- CARD STARTS --}}
   <div class="card">
-    <div class="card-header" style="background-color: rgb(0, 82, 204);color: rgb(255, 255, 255);">
-       Edit post : {{ $posts->title }} 
+    <div class="card-header" style="color: #0e0c28;">
+       Edit post : {{ $posts->title }}
     </div>
     <div class="card-body">
       {{-- FORM STARTS --}}
@@ -33,7 +33,7 @@
             <select name="category_id" class="form-control" id="category">
               @foreach ($categories as $category)
                 {{-- <option default>None</option> --}}
-                <option value="{{ $category->id }}" 
+                <option value="{{ $category->id }}"
 
                   @if ($posts->category->id == $category->id)
                     selected
@@ -46,20 +46,20 @@
                 <p style="color: red;"> {{ $errors->first('category_id') }} </p>
             @endif
         </div>
-        
+
         <div class="form-group">
           <label for="option"> Select Tag </label>
           @foreach ($tags as $tag)
             <div class="checkbox">
               <label for="tags">
                 <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
-                
+
                 @foreach ($posts->tags as $t)
 
                   @if ($tag->id == $t->id)
                       checked
                   @endif
-                    
+
                 @endforeach
 
                 > {{ $tag->tag }} </label>
@@ -77,7 +77,7 @@
 
         <div class="form-group">
           <div class="text-center">
-            <button class="btn btn-success" type="submit"> Update Post </button>
+            <button class="btn btn-xs btn-success" type="submit"> Update Post </button>
           </div>
         </div>
 

@@ -5,7 +5,7 @@
     {{-- @include('admin.includes.errors') --}}
 
   <div class="card">
-    <div class="card-header" style="background-color: rgb(0, 82, 204);color: rgb(255, 255, 255);">
+    <div class="card-header" style="color: #0e0c28;">
         Edit your profile
     </div>
     <div class="card-body">
@@ -18,6 +18,7 @@
               <p style="color: red;"> {{ $errors->first('name') }} </p>
           @endif
         </div>
+
         <div class="form-group">
           <label for="email">E-mail</label>
           <input type="email" name="email" value="{{ $user->email }}" class="form-control">
@@ -25,6 +26,7 @@
               <p style="color: red;"> {{ $errors->first('email') }} </p>
           @endif
         </div>
+
         <div class="form-group">
             <label for="password">New Password</label>
             <input type="password" name="password" class="form-control">
@@ -32,10 +34,12 @@
               <p style="color: red;"> {{ $errors->first('password') }} </p>
           @endif
         </div>
+
         <div class="form-group">
             <label for="avatar">Update new avatar</label>
             <input type="file" name="avatar" class="form-control">
         </div>
+
         <div class="form-group">
             <label for="facebook">Facebook Profile</label>
             <input type="text" name="facebook" value="{{ $user->profile->facebook }}" class="form-control">
@@ -43,6 +47,7 @@
               <p style="color: red;"> {{ $errors->first('facebook') }} </p>
           @endif
         </div>
+
         <div class="form-group">
             <label for="youtube">Youtube Profile</label>
             <input type="text" name="youtube" value="{{ $user->profile->youtube }}" class="form-control">
@@ -50,6 +55,7 @@
               <p style="color: red;"> {{ $errors->first('youtube') }} </p>
           @endif
         </div>
+
         <div class="form-group">
             <label for="about">About you</label>
             <textarea name="about" id="about" cols="5" rows="5" class="form-control">{{ $user->profile->about }}</textarea>
@@ -57,10 +63,11 @@
               <p style="color: red;"> {{ $errors->first('about') }} </p>
           @endif
         </div>
+
         <div class="form-group">
-        <div class="text-center">
-          <button class="btn btn-success" type="submit"> Update User </button>
-        </div>
+            <div class="text-center">
+                <button class="btn btn-xs btn-success" type="submit"> Update User </button>
+            </div>
         </div>
       </form>
     </div>

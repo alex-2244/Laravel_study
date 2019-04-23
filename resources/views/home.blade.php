@@ -3,7 +3,7 @@
 @section('content')
 
   <div class="card">
-      <div class="card-header" style="background-color: rgb(0, 82, 204);color: rgb(255, 255, 255);">
+      <div class="card-header" style="color: #0e0c28;">
         Dashboard
       </div>
 
@@ -13,7 +13,7 @@
             {{ session('status') }}
         </div>
         @endif
-        Welcome! {{ Auth::user()->name }}
+        <h5> Welcome! {{ Auth::user()->name }}</h5>
       </div>
   </div>
 

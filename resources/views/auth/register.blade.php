@@ -63,7 +63,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-6">
-                                <button type="submit" class="btn btn-primary">{{ __('Register') }}</button>
+                                <button type="submit" class="btn btn-xs btn-primary">{{ __('Register') }}</button>
                             </div>
                         </div>
                     </form>

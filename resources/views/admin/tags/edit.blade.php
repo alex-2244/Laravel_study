@@ -5,7 +5,7 @@
     {{-- @include('admin.includes.errors') --}}
 
   <div class="card">
-    <div class="card-header" style="background-color: rgb(0, 82, 204);color: rgb(255, 255, 255);">
+    <div class="card-header" style="color: #0e0c28;">
         Edit Tag : {{ $tag->tag }}
     </div>
     <div class="card-body">
@@ -20,7 +20,7 @@
         </div>
           <div class="form-group">
           <div class="text-center">
-            <button class="btn btn-success" type="submit"> Update Tags </button>
+            <button class="btn btn-xs btn-success" type="submit"> Update Tags </button>
           </div>
         </div>
       </form>

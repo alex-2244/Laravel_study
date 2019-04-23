@@ -3,12 +3,12 @@
 
 @section('content')
     <div class="card">
-      <div class="card-header">
+      <div class="card-header" style="color: #0e0c28;">
         Published Posts
       </div>
       <div class="card-body">
         <table class="table table-hover">
-          <thead class="table-info" style="background-color: #0052CC;color: #fff;text-align: center;">
+          <thead class="table-info" style="text-align: center;">
             <th> Image </th>
             <th> Title </th>
             <th> Edit </th>
@@ -18,13 +18,13 @@
             @if ($posts->count() > 0)
               @foreach ($posts as $post)
                 <tr style="text-align: center;">
-                  <td> <img src="{{ "$post->featured" }}" alt="{{ $post->title }}" width="40px" height="40px"> </td>
+                  <td> <img src="{{ $post->featured }}" alt="{{ $post->title }}" width="40px" height="40px"> </td>
                   <td> {{ $post->title }} </td>
                   <td>
-                    <a href="{{ route('post.edit', ['id'=> $post->id]) }}" class="btn btn-sm btn-outline-primary"> <i class="fas fa-edit"></i> </a>
+                    <a href="{{ route('post.edit', ['id'=> $post->id]) }}" class="btn btn-xs btn-outline-primary"> <i class="fas fa-edit"></i> </a>
                   </td>
                   <td>
-                    <a href="{{ route('post.delete', ['id' => $post->id]) }}" class="btn btn-sm btn-outline-danger"> <i class="fas fa-trash"></i> </a>
+                    <a href="{{ route('post.delete', ['id' => $post->id]) }}" class="btn btn-xs btn-outline-danger"> <i class="fas fa-trash"></i> </a>
                   </td>
                 </tr>
               @endforeach
